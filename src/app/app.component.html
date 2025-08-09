@@ -1,0 +1,42 @@
+<div class="container mt-5">
+  <h2 class="text-center text-primary mb-4">Excel File Upload</h2>
+
+  <div class="text-center mb-3">
+    <input
+      type="file"
+      (change)="onFileChange($event)"
+      class="form-control w-50 mx-auto"
+      accept=".xlsx, .xls"
+    />
+  </div>
+
+  <div *ngIf="displayedRows.length > 0" class="table-responsive">
+    <!-- <h4 class="text-success text-center">Data Loading...</h4> -->
+
+    <div class="text-center mb-3">
+      <button
+        class="btn btn-success mt-3"
+        (click)="exportToExcel()"
+      >
+        Export to Excel
+      </button>
+    </div>
+
+    <div class="text-center mt-3 mb-3">
+      <button
+        class="btn btn-danger"
+        (click)="exportToPDF()"
+      >
+      Download as PDF
+      </button>
+    </div>
+
+    <table class="table table-bordered table-hover text-center">
+      <tbody>
+        <tr *ngFor="let row of displayedRows">
+          <td *ngFor="let col of row">{{ col }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
